@@ -1,4 +1,5 @@
 import Foundation
+import CocoaLumberjackSwift
 
 public enum HTTPAdapterError: Error, CustomStringConvertible {
     case invalidURL, serailizationFailure
