@@ -56,12 +56,19 @@ public class HTTPAdapter: AdapterSocket {
             internalStatus = .connecting
             ///var maktlsSettings = [AnyHashable: Any]()
             ///maktlsSettings[(kCFStreamSSLValidatesCertificateChain as String)] = Int(truncating: true)
-            let maktlsSettings: [String: Bool] = [kCFStreamSSLValidatesCertificateChain as String: false]
-            let maktlsSettings: [String: Bool] = [kCFStreamSSLAllowsExpiredCertificates as String: true]
-            let maktlsSettings: [String: Bool] = [kCFStreamSSLAllowsAnyRoot as String: true]
+            ///let maktlsSettings: [String: Bool] = [kCFStreamSSLValidatesCertificateChain as String: false]
+            ///let maktlsSettings: [String: Bool] = [kCFStreamSSLAllowsExpiredCertificates as String: true]
+            ///let maktlsSettings: [String: Bool] = [kCFStreamSSLAllowsAnyRoot as String: true]
+            
+            var settings = [AnyHashable: Any](minimumCapacity: 3)
+            settings[(kCFStreamSSLPeerName as String)] = self.socketHost()
+            //  // Allow self-signed certificates
+            settings[(kCFStreamSSLPeerName as String)] = Int(true)
+            //  // In fact, don't even validate the certificate chain
+            settings[(kCFStreamSSLValidatesCertificateChain as String)] = Int(false)
             
             
-            try socket.connectTo(host: serverHost, port: serverPort, enableTLS: true, tlsSettings: maktlsSettings)
+            try socket.connectTo(host: serverHost, port: serverPort, enableTLS: true, tlsSettings: settings)
         } catch {}
     }
 
