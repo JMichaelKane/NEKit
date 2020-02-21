@@ -55,7 +55,7 @@ public class HTTPAdapter: AdapterSocket {
         do {
             internalStatus = .connecting
             var maktlsSettings = [AnyHashable: Any]()
-            maktlsSettings[(kCFStreamSSLValidatesCertificateChain as String)] = Int(truncating: false)
+            maktlsSettings[(kCFStreamSSLValidatesCertificateChain as String)] = Int(truncating: true)
             try socket.connectTo(host: serverHost, port: serverPort, enableTLS: secured, tlsSettings: maktlsSettings)
         } catch {}
     }
