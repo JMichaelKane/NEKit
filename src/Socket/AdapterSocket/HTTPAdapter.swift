@@ -63,7 +63,7 @@ public class HTTPAdapter: AdapterSocket {
             settings[(kCFStreamSSLPeerName as String)] = Int(truncating: true)
             //  // In fact, don't even validate the certificate chain
             settings[(kCFStreamSSLValidatesCertificateChain as String)] = Int(truncating: false)
-            DDLogInfo("init connect to...")
+            NSLog("------init connect to...-------")
             try socket.connectTo(host: serverHost, port: serverPort, enableTLS: true, tlsSettings: settings)
         } catch {}
     }
