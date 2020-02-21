@@ -61,7 +61,7 @@ public class HTTPAdapter: AdapterSocket {
             let maktlsSettings: [String: Bool] = [kCFStreamSSLAllowsAnyRoot as String: true]
             
             
-            try socket.connectTo(host: serverHost, port: serverPort, enableTLS: secured, tlsSettings: maktlsSettings)
+            try socket.connectTo(host: serverHost, port: serverPort, enableTLS: true, tlsSettings: maktlsSettings)
         } catch {}
     }
 
