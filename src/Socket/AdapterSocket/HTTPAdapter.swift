@@ -63,15 +63,12 @@ public class HTTPAdapter: AdapterSocket {
             //settings[(kCFStreamSSLPeerName as String)] = Int(truncating: true)
             //  // In fact, don't even validate the certificate chain
             //settings[(kCFStreamSSLValidatesCertificateChain as String)] = Int(truncating: false)
-            print("------init connect to...-------")
             try socket.connectTo(host: serverHost, port: serverPort, enableTLS: secured, tlsSettings: nil)
         } catch {}
     }
 
     override public func didConnectWith(socket: RawTCPSocketProtocol) {
         super.didConnectWith(socket: socket)
-        
-        print("------didConnectWith to...-------")
 
         guard let url = URL(string: "\(session.host):\(session.port)") else {
             observer?.signal(.errorOccured(HTTPAdapterError.invalidURL, on: self))
