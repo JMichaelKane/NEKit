@@ -58,13 +58,13 @@ public class HTTPAdapter: AdapterSocket {
             //var maktlsSettings = [AnyHashable: Any]()
             //maktlsSettings[(kCFStreamSSLValidatesCertificateChain as String)] = Int(truncating: false)
             //let settings: [String: Bool] = [kCFStreamSSLValidatesCertificateChain as String: false]
-            var settings = [AnyHashable: Any](minimumCapacity: 3)
+            //var settings = [AnyHashable: Any](minimumCapacity: 3)
             //  // Allow self-signed certificates
-            settings[(kCFStreamSSLPeerName as String)] = Int(truncating: true)
+            //settings[(kCFStreamSSLPeerName as String)] = Int(truncating: true)
             //  // In fact, don't even validate the certificate chain
-            settings[(kCFStreamSSLValidatesCertificateChain as String)] = Int(truncating: false)
+            //settings[(kCFStreamSSLValidatesCertificateChain as String)] = Int(truncating: false)
             NSLog("------init connect to...-------")
-            try socket.connectTo(host: serverHost, port: serverPort, enableTLS: true, tlsSettings: settings)
+            try socket.connectTo(host: serverHost, port: serverPort, enableTLS: secured, tlsSettings: nil)
         } catch {}
     }
 
