@@ -249,6 +249,7 @@ open class GCDTCPSocket: NSObject, GCDAsyncSocketDelegate, RawTCPSocketProtocol 
         }
         
         setting[kCFStreamSSLPeerName as String] = host! as NSString
+        setting[(kCFStreamSSLValidatesCertificateChain as String)] = Int(truncating: false) as NSObject
         return setting
     }
 }
